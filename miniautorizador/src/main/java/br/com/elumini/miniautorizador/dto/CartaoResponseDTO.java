@@ -1,10 +1,8 @@
 package br.com.elumini.miniautorizador.dto;
 
 import br.com.elumini.miniautorizador.model.Cartao;
-import lombok.Getter;
-import lombok.Setter;
 
-public class CartaoResponseDTO extends CartaoBaseDTO{
+public class CartaoResponseDTO extends CartaoBaseDTO {
 
     public CartaoResponseDTO(String numero, String senha) {
         super(numero, senha);

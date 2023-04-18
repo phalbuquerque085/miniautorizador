@@ -3,13 +3,15 @@ package br.com.elumini.miniautorizador.service;
 
 import br.com.elumini.miniautorizador.dto.CartaoResponseDTO;
 import br.com.elumini.miniautorizador.dto.CartaoResquestDTO;
-import br.com.elumini.miniautorizador.exception.ExceptionCartaoNaoExistente;
+import br.com.elumini.miniautorizador.exception.ExceptionCartaoNaoExistente_404;
 import br.com.elumini.miniautorizador.model.Cartao;
 import br.com.elumini.miniautorizador.repository.CartaoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class CartaoService {
 
     @Autowired
@@ -20,7 +22,7 @@ public class CartaoService {
     }
 
     public Double obterSaldo(String numero) {
-        return cartaoRepository.findByNumero(numero).map(c -> c.getSaldo()).orElseThrow(ExceptionCartaoNaoExistente::new);
+        return cartaoRepository.findByNumero(numero).map(c -> c.getSaldo()).orElseThrow(ExceptionCartaoNaoExistente_404::new);
     }
 
 }

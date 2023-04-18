@@ -5,23 +5,24 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-
-
 @Getter
 @Setter
-public class CartaoBaseDTO {
+public class TransacaoRequestDTO{
+    @NotNull
+    private Double valor;
+
     @NotNull
     @NotEmpty
     private String numeroCartao;
 
     @NotNull
     @NotEmpty
-    private String senha;
+    private String senhaCartao;
 
-    public CartaoBaseDTO(String numero, String senha) {
+    public TransacaoRequestDTO(String numero, String senha, Double valor) {
+        this.valor = valor;
+        this.senhaCartao = senha;
         this.numeroCartao = numero;
-        this.senha = senha;
     }
 
-    public CartaoBaseDTO() {}
 }
