@@ -14,8 +14,11 @@ public interface CartaoRepository extends CrudRepository<Cartao, String> {
 
     Optional<Cartao> findByNumeroAndSenha(String numero, String senha);
 
-    @Query(nativeQuery = true, value = "SELECT IF(c.saldo > :valor, null, c.id) FROM miniautorizador.cartao c where c.numero= :numero")
+    @Query(nativeQuery = true, value = "SELECT IF(c.saldo > :valor, null, c.id) FROM miniautorizador.cartao c WHERE c.numero= :numero")
     Optional<Long> obterLimiteCartao(Double valor, String numero);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM miniautorizador.cartao c WHERE c.numero= :numero FOR UPDATE")
+    Cartao findByNumeroLock(String numero);
 
 
 }

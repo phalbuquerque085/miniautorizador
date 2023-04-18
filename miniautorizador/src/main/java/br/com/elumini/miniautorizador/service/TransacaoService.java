@@ -20,8 +20,9 @@ public class TransacaoService {
 
     @Transactional
     public void realizarTransacao(TransacaoRequestDTO transacao) {
+        Cartao cartao = cartaoRepository.findByNumeroLock(transacao.getNumeroCartao());
         validaTransacao(transacao);
-        Cartao cartao = cartaoRepository.findByNumero(transacao.getNumeroCartao()).get();
+//        Cartao cartao = cartaoRepository.findByNumero(transacao.getNumeroCartao()).get();
         cartao.setSaldo(cartao.getSaldo() - transacao.getValor());
         cartaoRepository.save(cartao);
     }
