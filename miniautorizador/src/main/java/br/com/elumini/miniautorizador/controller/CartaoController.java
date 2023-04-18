@@ -24,7 +24,7 @@ public class CartaoController {
     }
 
     @GetMapping("/cartoes/{numeroCartao}")
-    public ResponseEntity<Object> obterSaldo(@PathVariable(required = true) String numeroCartao, HttpServletRequest request){
-            return new ResponseEntity<>(cartaoService.obterSaldoCartao(numeroCartao), HttpStatus.OK);
+    public ResponseEntity<Object> obterSaldo(@PathVariable(required = true) String numero, HttpServletRequest request){
+            return new ResponseEntity<>(cartaoService.obterSaldo(numero), HttpStatus.OK);
     }
 }
