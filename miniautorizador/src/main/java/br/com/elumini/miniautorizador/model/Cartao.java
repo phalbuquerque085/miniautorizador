@@ -1,13 +1,13 @@
 package br.com.elumini.miniautorizador.model;
 
 import br.com.elumini.miniautorizador.dto.CartaoResquestDTO;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Getter
@@ -19,9 +19,6 @@ public class Cartao {
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(nullable = false, unique = true, updatable = false)
     private Long id;
-//    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "cartao_sequence")
-//    @SequenceGenerator(name="cartao_sequence", sequenceName="miniautorizador.cartao_seq", schema="miniautorizador", allocationSize = 1)
-//    @GeneratedValue
 
     @Column(nullable = false, unique = true, updatable = false, length = 16)
     @NotNull
