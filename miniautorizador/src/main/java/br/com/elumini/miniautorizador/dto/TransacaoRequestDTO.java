@@ -26,4 +26,6 @@ public class TransacaoRequestDTO{
         this.numeroCartao = numero;
     }
 
+    public TransacaoRequestDTO(){}
+
 }
