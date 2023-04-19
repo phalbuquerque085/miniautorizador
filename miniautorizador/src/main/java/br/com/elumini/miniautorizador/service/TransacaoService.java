@@ -19,12 +19,12 @@ public class TransacaoService {
     private CartaoRepository cartaoRepository;
 
     @Transactional
-    public void realizarTransacao(TransacaoRequestDTO transacao) {
+    public Cartao realizarTransacao(TransacaoRequestDTO transacao) {
         Cartao cartao = cartaoRepository.findByNumeroLock(transacao.getNumeroCartao());
         validaTransacao(transacao);
-//        Cartao cartao = cartaoRepository.findByNumero(transacao.getNumeroCartao()).get();
         cartao.setSaldo(cartao.getSaldo() - transacao.getValor());
         cartaoRepository.save(cartao);
+        return cartao;
     }
 
     private void validaTransacao(TransacaoRequestDTO transacao) {

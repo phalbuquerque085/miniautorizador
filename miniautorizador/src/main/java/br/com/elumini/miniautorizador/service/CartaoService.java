@@ -14,12 +14,11 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class CartaoService {
-
     @Autowired
     private CartaoRepository cartaoRepository;
 
-    public CartaoResponseDTO criarCartao(CartaoResquestDTO cartaoRequest) {
-        return new CartaoResponseDTO(cartaoRepository.save(new Cartao(cartaoRequest)));
+    public CartaoResponseDTO criarCartao(Cartao cartao) {
+        return new CartaoResponseDTO(cartaoRepository.save(cartao));
     }
 
     public Double obterSaldo(String numero) {

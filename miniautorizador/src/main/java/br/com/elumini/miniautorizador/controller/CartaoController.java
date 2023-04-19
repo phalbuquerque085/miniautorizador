@@ -1,6 +1,7 @@
 package br.com.elumini.miniautorizador.controller;
 
 import br.com.elumini.miniautorizador.dto.CartaoResquestDTO;
+import br.com.elumini.miniautorizador.model.Cartao;
 import br.com.elumini.miniautorizador.service.CartaoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,7 +28,7 @@ public class CartaoController {
             @ApiResponse(responseCode = "422", description = "Unprocessable Entity", content = @Content(schema = @Schema(implementation = CartaoResquestDTO.class)))})
     public ResponseEntity<Object> criar(@RequestBody @Valid CartaoResquestDTO cartaoDTO, HttpServletRequest request) {
         request.setAttribute("cartaoDTO", cartaoDTO);
-        return new ResponseEntity<>(cartaoService.criarCartao(cartaoDTO), HttpStatus.CREATED);
+        return new ResponseEntity<>(cartaoService.criarCartao(new Cartao(cartaoDTO)), HttpStatus.CREATED);
     }
 
     @GetMapping("/cartoes/{numero}")

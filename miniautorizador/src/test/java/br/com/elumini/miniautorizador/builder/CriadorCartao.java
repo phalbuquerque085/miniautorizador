@@ -1,5 +1,6 @@
 package br.com.elumini.miniautorizador.builder;
 
+import br.com.elumini.miniautorizador.dto.CartaoResquestDTO;
 import br.com.elumini.miniautorizador.model.Cartao;
 
 import java.time.LocalDate;
